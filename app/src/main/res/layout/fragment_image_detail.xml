@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="imageItem"
+            type="com.mobsol.pixabay.model.ImageItem" />
+        <import type="java.text.NumberFormat"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.detail.ImageDetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="15dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline_end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="15dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintHeight_percent="0.45"
+                app:error="@{@drawable/img_loading_pics}"
+                app:imageUrl="@{imageItem.largeImageURL}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0"
+                app:placeholder="@{@drawable/img_loading_pics}" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_user_profile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                app:error="@{@drawable/img_loading_pics}"
+                app:imageUrl="@{imageItem.userImageURL}"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_photo"
+                app:placeholder="@{@drawable/img_loading_pics}"
+                app:shapeAppearanceOverlay="@style/CircularImageView"
+                app:strokeColor="@color/light_gray"
+                app:strokeWidth="1dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_back_bg"
+                android:padding="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_back" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_user_name"
+                style="@style/TextAppearance.MdcTypographyStyles.Headline6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@{imageItem.user}"
+                android:textColor="@color/dark_violet"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/iv_user_profile"
+                app:layout_constraintStart_toStartOf="@+id/iv_user_profile"
+                app:layout_constraintTop_toBottomOf="@+id/iv_user_profile"
+                tools:text="Waqas Ashiq" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_lbl_downloads"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/lbl_downloads"
+                android:textColor="@color/dark_violet"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/tv_user_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_downloads"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{NumberFormat.getIntegerInstance().format(imageItem.downloads)}'
+                android:textColor="@color/dark_violet"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_lbl_downloads"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+                app:layout_constraintTop_toTopOf="@+id/tv_lbl_downloads"
+                tools:text="2000" />
+
+            <View
+                android:id="@+id/divider_downloads"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lbl_downloads" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_lbl_likes"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/lbl_likes"
+                android:textColor="@color/dark_violet"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/divider_downloads" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_likes"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{NumberFormat.getIntegerInstance().format(imageItem.likes)}'
+                android:textColor="@color/dark_violet"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_lbl_likes"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+                app:layout_constraintTop_toTopOf="@+id/tv_lbl_likes"
+                tools:text="3000" />
+
+            <View
+                android:id="@+id/divider_likes"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lbl_likes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_lbl_comments"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/lbl_comments"
+                android:textColor="@color/dark_violet"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/divider_likes" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_comments"
+                style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{NumberFormat.getIntegerInstance().format(imageItem.comments)}'
+                android:textColor="@color/dark_violet"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_lbl_comments"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+                app:layout_constraintTop_toTopOf="@+id/tv_lbl_comments"
+                tools:text="66000" />
+
+            <View
+                android:id="@+id/divider_comments"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="15dp"
+                android:background="@color/light_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_lbl_comments" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_image_tags"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:overScrollMode="never"
+                app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                app:layout_constraintEnd_toStartOf="@+id/guideline_end"
+                app:layout_constraintStart_toEndOf="@+id/guideline_start"
+                app:layout_constraintTop_toBottomOf="@+id/divider_comments"
+                tools:listitem="@layout/image_tag_item" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

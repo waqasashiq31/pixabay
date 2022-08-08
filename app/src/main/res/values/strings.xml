@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Pixabay</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="lbl_no_internet">No Internet Connection</string>
+    <string name="lbl_no_internet_retry_later">There was a problem connecting to the internet. Please hit ‘Retry’ to connect again.</string>
+    <string name="lbl_retry">Retry</string>
+    <string name="lbl_image_details">Image Details</string>
+    <string name="lbl_click_to_see_detail">Click OK to see image details</string>
+    <string name="lbl_no_images_found">No images found against the query!!</string>
+    <string name="lbl_ok">OK</string>
+    <string name="lbl_cancel">Cancel</string>
+    <string name="lbl_downloads">Downloads</string>
+    <string name="lbl_likes">Likes</string>
+    <string name="lbl_comments">Comments</string>
+</resources>

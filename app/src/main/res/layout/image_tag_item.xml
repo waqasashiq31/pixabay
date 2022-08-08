@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="tag"
+            type="String" />
+    </data>
+
+    <TextView
+        android:id="@+id/tv_tag"
+        style="@style/TextAppearance.MdcTypographyStyles.Subtitle1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/image_tag_bg"
+        android:paddingStart="15dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="5dp"
+        android:text="@{tag}"
+        android:textColor="@color/dark_violet"
+        android:textStyle="bold"
+        tools:text="Tag 1" />
+</layout>
